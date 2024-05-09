@@ -12,5 +12,24 @@ var findMaxK = function (nums) {
   }
   return max;
 };
+// Time : O(n2)
 
-console.log(findMaxK([-10, 8, 6, 7, -2, -3]));
+var findMaxK2 = function (nums) {
+  let setArray = new Set();
+  let max = -1;
+  for (let i = 0; i < nums.length; i++) {
+    if (nums[i] < 0) {
+      setArray.add(nums[i]);
+    }
+  }
+  for (let i = 0; i < nums.length; i++) {
+    if (nums[i] > max && setArray.has(-nums[i])) {
+      max = nums[i];
+    }
+  }
+  return max;
+};
+
+// Time : O(n)
+
+console.log(findMaxK2([-7, 8, 6, 7, -2, -3]));

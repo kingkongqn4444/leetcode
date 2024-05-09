@@ -13,13 +13,26 @@
 //   return nums;
 // };
 
+// var rotate = function (nums, k) {
+//   while (nums.length <= k) {
+//     k = k - nums.length;
+//   }
+//   const temp = nums.splice(0, nums.length - k);
+//   nums.push(...temp);
+//   return nums;
+// };
+
 var rotate = function (nums, k) {
-  while (nums.length <= k) {
-    k = k - nums.length;
-  }
-  const temp = nums.splice(0, nums.length - k);
-  nums.push(...temp);
-  return nums;
+  // Tạo mảng chứa k phần tử cuối cùng
+  const lastKElements = nums.slice(-k);
+
+  // Tạo mảng chứa phần còn lại của mảng gốc
+  const remainingElements = nums.slice(0, -k);
+
+  // Kết hợp hai mảng
+  const rotatedArray = lastKElements.concat(remainingElements);
+
+  return rotatedArray;
 };
 
-console.log("============", rotate([-1, -100, 3, 99], 2));
+console.log("============", rotate([1, 2, 3, 4, 5, 6, 7], 3));

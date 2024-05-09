@@ -211,10 +211,55 @@
 // let b = aaa.split("");
 // console.log(b);
 
-function sumRange(num) {
-  if (num === 1) return 1;
-  console.log(num);
-  return num + sumRange(num - 1);
-}
+// function sumRange(num) {
+//   if (num === 1) return 1;
+//   console.log(num);
+//   return num + sumRange(num - 1);
+// }
 
-console.log(sumRange(5));
+// console.log(sumRange(5));
+
+// const array1 = [1, 2, 3, 4, 5, 6];
+// const array2 = array1;
+
+// array2[0] = 10;
+// console.log(array1, array2);
+
+// const a = new Array(10).fill(0);
+
+// console.log(a);
+
+// let resolveData;
+
+// const dataPromise = new Promise((resolve, reject) => {
+//   resolveData = resolve;
+//   setTimeout(() => {
+//     resolve("data");
+//   }, 2000);
+// });
+
+// resolveData("01");
+
+// dataPromise.then((success) => console.log(success));
+
+const dataPromise = new Promise((resolve, reject) => {
+  setTimeout(() => {
+    resolve("data");
+  }, 2000);
+});
+
+// (async () => {
+//   const success = await dataPromise;
+//   console.log(success); // In ra 'data'
+// })();
+
+const aaa = async () => {
+  const bbb = await dataPromise;
+  console.log(bbb);
+};
+
+aaa();
+// (async () => {
+//   await dataPromise;
+//   console.log("01");
+// })();
